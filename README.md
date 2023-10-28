@@ -123,3 +123,4 @@ Time: 0.022s
 ## Ressources
 
 - [Tree data as a nested list redux](https://schinckel.net/2017/07/01/tree-data-as-a-nested-list-redux/)
+- [Hierarchical structures in PostgreSQL (with ltree)](https://tudborg.com/posts/2022-02-04-postgres-hierarchical-data-with-ltree/)
