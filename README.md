@@ -168,7 +168,24 @@ SELECT 11
 Time: 0.005s
 ```
 
+Gel all immediate children of `folder_a`:
+
+```
+postgres@127:postgres> select * from public.ltree_folders where path ~ '1.*{1}';
++----+------+-----------+
+| id | path | name      |
+|----+------+-----------|
+| 2  | 1.1  | folder_aa |
+| 6  | 1.2  | folder_ab |
+| 7  | 1.3  | folder_ac |
+| 8  | 1.4  | folder_ad |
++----+------+-----------+
+SELECT 4
+Time: 0.004s
+```
+
 ## Ressources
 
 - [Tree data as a nested list redux](https://schinckel.net/2017/07/01/tree-data-as-a-nested-list-redux/)
 - [Hierarchical structures in PostgreSQL (with ltree)](https://tudborg.com/posts/2022-02-04-postgres-hierarchical-data-with-ltree/)
+- [Manipulating Trees Using SQL and the Postgres LTREE Extension](https://patshaughnessy.net/2017/12/14/manipulating-trees-using-sql-and-the-postgres-ltree-extension)
