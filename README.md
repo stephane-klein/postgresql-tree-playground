@@ -40,7 +40,86 @@ postgres@127:postgres> select * from public.folders;
 | 1  | folder_a   | 1        | <null>    |
 | 2  | folder_aa  | 1        | 1         |
 | 3  | folder_aaa | 1        | 2         |
+| 4  | folder_aab | 2        | 2         |
+| 5  | folder_aac | 3        | 2         |
+| 6  | folder_ab  | 2        | 1         |
+| 7  | folder_ac  | 3        | 1         |
 +----+------------+----------+-----------+
 SELECT 3
 Time: 0.007s
+
+postgres@127:postgres> \i get_folders_jsonb_tree.sql
++-------------------------------------------+
+| jsonb_pretty                              |
+|-------------------------------------------|
+| {                                         |
+|     "id": 1,                              |
+|     "lvl": 0,                             |
+|     "name": "folder_a",                   |
+|     "children": [                         |
+|         {                                 |
+|             "id": 6,                      |
+|             "lvl": 1,                     |
+|             "name": "folder_ab",          |
+|             "children": [                 |
+|             ],                            |
+|             "position": 2,                |
+|             "parent_id": 1                |
+|         },                                |
+|         {                                 |
+|             "id": 2,                      |
+|             "lvl": 1,                     |
+|             "name": "folder_aa",          |
+|             "children": [                 |
+|                 {                         |
+|                     "id": 5,              |
+|                     "lvl": 2,             |
+|                     "name": "folder_aac", |
+|                     "children": [         |
+|                     ],                    |
+|                     "position": 3,        |
+|                     "parent_id": 2        |
+|                 },                        |
+|                 {                         |
+|                     "id": 4,              |
+|                     "lvl": 2,             |
+|                     "name": "folder_aab", |
+|                     "children": [         |
+|                     ],                    |
+|                     "position": 2,        |
+|                     "parent_id": 2        |
+|                 },                        |
+|                 {                         |
+|                     "id": 3,              |
+|                     "lvl": 2,             |
+|                     "name": "folder_aaa", |
+|                     "children": [         |
+|                     ],                    |
+|                     "position": 1,        |
+|                     "parent_id": 2        |
+|                 }                         |
+|             ],                            |
+|             "position": 1,                |
+|             "parent_id": 1                |
+|         },                                |
+|         {                                 |
+|             "id": 7,                      |
+|             "lvl": 1,                     |
+|             "name": "folder_ac",          |
+|             "children": [                 |
+|             ],                            |
+|             "position": 3,                |
+|             "parent_id": 1                |
+|         }                                 |
+|     ],                                    |
+|     "position": 1,                        |
+|     "parent_id": null                     |
+| }                                         |
++-------------------------------------------+
+SELECT 1
+Time: 0.022s
 ```
+
+## Ressources
+
+- [Tree data as a nested list redux](https://schinckel.net/2017/07/01/tree-data-as-a-nested-list-redux/)
