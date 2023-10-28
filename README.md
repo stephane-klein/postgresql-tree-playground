@@ -44,6 +44,7 @@ $ ./scripts/enter-in-pg.sh
 
 ### Play with `parent/child/ relationship implementation
 
+```sh
 postgres@127:postgres> select * from public.folders;
 +----+------------+----------+-----------+
 | id | name       | position | parent_id |
@@ -58,7 +59,9 @@ postgres@127:postgres> select * from public.folders;
 +----+------------+----------+-----------+
 SELECT 3
 Time: 0.007s
+```
 
+```sh
 postgres@127:postgres> \i get_folders_jsonb_tree.sql
 +-------------------------------------------+
 | jsonb_pretty                              |
@@ -129,6 +132,7 @@ postgres@127:postgres> \i get_folders_jsonb_tree.sql
 +-------------------------------------------+
 SELECT 1
 Time: 0.022s
+```
 
 ### Play with `ltree` implementation
 
