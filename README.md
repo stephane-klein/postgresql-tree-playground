@@ -26,6 +26,13 @@ I install both *psql* and *pgcli* for the following reasons:
 - I like *pgcli* for autocompletion and multiline vim editor features
 - However, *pgcli* don't support ["pipe" feature](https://github.com/dbcli/pgcli/issues/307). That's why I also install *psql*, I use psql to inject files into *PostgreSQL*.
 
+## Two implementation
+
+This playground implement two data model to store "folder" tree:
+
+- a data model based on `parent/child/ relationship (use `parent_id` field)
+- a data model based on [`ltree` extension](https://www.postgresql.org/docs/current/ltree.html)
+
 ## Getting start
 
 ```sh

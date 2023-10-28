@@ -24,3 +24,23 @@ INSERT INTO public.folders (id, name, position, parent_id) VALUES
             (19, 'folder_bab', 2, 17),
             (20, 'folder_bac', 3, 17);
 
+
+TRUNCATE public.ltree_folders;
+
+INSERT INTO public.ltree_folders (path, name) VALUES
+    ('1',       'folder_a'),
+    ('1.1',     'folder_aa'),
+    ('1.1.1',   'folder_aaa'),
+    ('1.1.2',   'folder_aab'),
+    ('1.1.3',   'folder_aac'),
+    ('1.2',     'folder_ab'),
+    ('1.3',     'folder_ac'),
+    ('1.4',     'folder_ad'),
+    ('1.4.1',   'folder_ada'),
+    ('1.4.2',   'folder_adb'),
+    ('1.4.3',   'folder_adc'),
+    ('1.4.3.1', 'folder_adca'),
+    ('2',       'folder_b'),
+    ('2.1',     'folder_ba'),
+    ('2.2',     'folder_bb'),
+    ('2.2.1',   'folder_bba');
