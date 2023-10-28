@@ -40,6 +40,10 @@ $ docker compose up -d --wait
 $ ./scripts/seed.sh
 $ ./scripts/fixtures.sh
 $ ./scripts/enter-in-pg.sh
+```
+
+### Play with `parent/child/ relationship implementation
+
 postgres@127:postgres> select * from public.folders;
 +----+------------+----------+-----------+
 | id | name       | position | parent_id |
@@ -125,6 +129,43 @@ postgres@127:postgres> \i get_folders_jsonb_tree.sql
 +-------------------------------------------+
 SELECT 1
 Time: 0.022s
+
+### Play with `ltree` implementation
+
+Get all `folder_a` children:
+
+```
+postgres@127:postgres> WITH _folder AS (
+     SELECT path
+       FROM public.ltree_folders
+      WHERE id=1 -- <= id of "folder_a"
+      LIMIT 1
+ )
+ SELECT
+     id,
+     name
+ FROM
+     public.ltree_folders
+ WHERE
+     (path <@ (SELECT path FROM _folder)) AND
+     (path <> (SELECT path FROM _folder));
++----+-------------+
+| id | name        |
+|----+-------------|
+| 2  | folder_aa   |
+| 3  | folder_aaa  |
+| 4  | folder_aab  |
+| 5  | folder_aac  |
+| 6  | folder_ab   |
+| 7  | folder_ac   |
+| 8  | folder_ad   |
+| 9  | folder_ada  |
+| 10 | folder_adb  |
+| 11 | folder_adc  |
+| 12 | folder_adca |
++----+-------------+
+SELECT 11
+Time: 0.005s
 ```
 
 ## Ressources
