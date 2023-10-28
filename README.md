@@ -1,6 +1,6 @@
 # PostgreSQL Tree datamodel playground
 
-Issue context (in french): stephane-klein/backlog#335
+Issue context (in french): https://github.com/stephane-klein/backlog/issues/335
 
 ## Prerequisites
 
